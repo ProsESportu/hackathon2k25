@@ -1,0 +1,73 @@
+[gd_scene load_steps=14 format=3 uid="uid://cmsei1ulpnh8f"]
+
+[ext_resource type="Texture2D" uid="uid://douke64tq6jul" path="res://room assets/Tiles107_1K-JPG/Tiles107_1K-JPG_Color.jpg" id="1_jn645"]
+[ext_resource type="Texture2D" uid="uid://cykocjjwlm4ow" path="res://room assets/Tiles107_1K-JPG/Tiles107_1K-JPG_NormalGL.jpg" id="2_qvc4m"]
+[ext_resource type="Texture2D" uid="uid://ctk8jb5k2ojtg" path="res://room assets/Tiles107_1K-JPG/Tiles107_1K-JPG_Roughness.jpg" id="3_7dqbv"]
+[ext_resource type="Texture2D" uid="uid://c2tfw8us1lwl8" path="res://room assets/WoodFloor067B_1K-JPG/WoodFloor067B_1K-JPG_Color.jpg" id="4_ybpoa"]
+[ext_resource type="Texture2D" uid="uid://c1nc71sbb2l1g" path="res://room assets/WoodFloor067B_1K-JPG/WoodFloor067B_1K-JPG_NormalGL.jpg" id="5_qtoah"]
+[ext_resource type="Texture2D" uid="uid://dekc4mo8ixt63" path="res://room assets/WoodFloor067B_1K-JPG/WoodFloor067B_1K-JPG_Roughness.jpg" id="6_eom3m"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tk5fv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w68ji"]
+albedo_texture = ExtResource("1_jn645")
+roughness_texture = ExtResource("3_7dqbv")
+normal_enabled = true
+normal_texture = ExtResource("2_qvc4m")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_23wr2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3j2fx"]
+albedo_texture = ExtResource("4_ybpoa")
+roughness = 0.48
+roughness_texture = ExtResource("6_eom3m")
+normal_enabled = true
+normal_scale = 6.81
+normal_texture = ExtResource("5_qtoah")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jn645"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qvc4m"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dqbv"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[node name="room" type="Node3D"]
+
+[node name="tiles" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1, 1, 0)
+mesh = SubResource("PlaneMesh_tk5fv")
+surface_material_override/0 = SubResource("StandardMaterial3D_w68ji")
+
+[node name="tiles2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 0, 1, -1)
+mesh = SubResource("PlaneMesh_tk5fv")
+surface_material_override/0 = SubResource("StandardMaterial3D_w68ji")
+
+[node name="tiles3" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.371139e-08, -1, 8.742278e-08, -1, -4.371139e-08, 0, 3.821371e-15, -8.742278e-08, -1, 1, 1, 0)
+mesh = SubResource("PlaneMesh_tk5fv")
+surface_material_override/0 = SubResource("StandardMaterial3D_w68ji")
+
+[node name="tiles4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-5.7320566e-15, 1.3113416e-07, 1, -1, -4.371139e-08, 0, 4.371139e-08, -1, 1.3113416e-07, 0, 1, 1)
+mesh = SubResource("PlaneMesh_tk5fv")
+surface_material_override/0 = SubResource("StandardMaterial3D_w68ji")
+
+[node name="floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_23wr2")
+surface_material_override/0 = SubResource("StandardMaterial3D_3j2fx")
+
+[node name="ceiling" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("PlaneMesh_jn645")
+
+[node name="lamp" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9469523, -0.04349351)
+mesh = SubResource("BoxMesh_qvc4m")
+surface_material_override/0 = SubResource("StandardMaterial3D_7dqbv")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="lamp"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.76384354, 0)
